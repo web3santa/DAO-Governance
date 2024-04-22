@@ -18,7 +18,7 @@ contract MyGovernor is
 {
     constructor(IVotes _token, TimelockController _timelock)
         Governor("MyGovernor")
-        GovernorSettings(1, /* 1 block */ 50400, /* 1 week */ 0)
+        GovernorSettings(1, /* 1 day */ 10, /* 1 week */ 0)
         GovernorVotes(_token)
         GovernorVotesQuorumFraction(4)
         GovernorTimelockControl(_timelock)
@@ -73,6 +73,16 @@ contract MyGovernor is
         bytes32 descriptionHash
     ) internal override(Governor, GovernorTimelockControl) returns (uint48) {
         return super._queueOperations(proposalId, targets, values, calldatas, descriptionHash);
+    }
+
+    function queueOperations(
+        uint256 proposalId,
+        address[] memory targets,
+        uint256[] memory values,
+        bytes[] memory calldatas,
+        bytes32 descriptionHash
+    ) public {
+        _queueOperations(proposalId, targets, values, calldatas, descriptionHash);
     }
 
     function _executeOperations(

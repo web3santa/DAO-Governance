@@ -7,7 +7,7 @@ import {ERC20Votes} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Vo
 import {Nonces} from "@openzeppelin/contracts/utils/Nonces.sol";
 
 contract GovToken is ERC20, ERC20Permit, ERC20Votes {
-    constructor() ERC20("Gold", "GLD") ERC20Permit("Gold") {}
+    constructor() ERC20("MyGovernor", "MyGovernor") ERC20Permit("MyGovernor") {}
 
     // The following functions are overrides required by Solidity.
 

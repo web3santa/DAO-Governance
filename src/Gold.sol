@@ -7,7 +7,7 @@ pragma solidity ^0.8.20;
 contract Gold is Ownable {
     uint256 private s_number;
 
-    constructor() Ownable(msg.sender) {}
+    constructor(address user) Ownable(user) {}
 
     event NumberChanged(uint256 number);
 
